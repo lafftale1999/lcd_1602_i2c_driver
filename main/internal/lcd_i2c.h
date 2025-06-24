@@ -13,3 +13,7 @@
 #define I2C_MASTER_RX_BUF_DISABLE   0                           /*!< I2C master doesn't need buffer */
 #define I2C_MASTER_TIMEOUT_MS       1000
 #define I2C_DEVICE_ADDRESS_LEN      I2C_ADDR_BIT_LEN_7
+
+uint8_t i2c_open(i2c_master_bus_handle_t *bus_handle, i2c_master_dev_handle_t *dev_handle, const uint8_t address);
+uint8_t i2c_read_register(i2c_master_dev_handle_t dev_handle, uint8_t reg_addr, uint8_t *data, size_t len);
+uint8_t i2c_write_byte(i2c_master_dev_handle_t dev_handle, uint8_t reg_addr, uint8_t data);
