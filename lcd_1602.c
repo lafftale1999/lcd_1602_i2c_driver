@@ -58,7 +58,7 @@ static uint8_t lcd_goto(i2c_master_dev_handle_t handle, uint8_t x, uint8_t y) {
 
 LCD_WRITE_STATUS lcd_1602_send_string(i2c_master_dev_handle_t handle, char *str) {
     clear_screen(handle);
-    goto(0,0);
+    lcd_goto(0,0);
 
     uint8_t char_len = 0;
     uint8_t row = 0;
