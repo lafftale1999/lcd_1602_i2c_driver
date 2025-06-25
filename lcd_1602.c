@@ -12,7 +12,10 @@ static uint8_t write_nibble(i2c_master_dev_handle_t handle, uint8_t nibble, bool
     sequence[0] = data | LCD_1602_ENABLE;
     sequence[1] = data & ~LCD_1602_ENABLE;
 
-    return i2c_master_transmit(handle, sequence, sizeof(sequence), I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    uint8_t ret = i2c_master_transmit(handle, sequence, sizeof(sequence), I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    vTaskDelay(pdMS_TO_TICKS(2));
+    
+    return ret;
 }
 
 static uint8_t send_command(i2c_master_dev_handle_t handle, uint8_t cmd) {
@@ -45,7 +48,7 @@ static uint8_t send_char(i2c_master_dev_handle_t handle, char c) {
 
 static uint8_t clear_screen(i2c_master_dev_handle_t handle) {
     uint8_t err = send_command(handle, LCD_1602_CLEAR_SCREEN);
-    vTaskDelay(pdMS_TO_TICKS(5));
+    vTaskDelay(pdMS_TO_TICKS(10));
     return err;
 }
 
@@ -58,6 +61,7 @@ static uint8_t lcd_goto(i2c_master_dev_handle_t handle, uint8_t x, uint8_t y) {
 
 LCD_WRITE_STATUS lcd_1602_send_string(i2c_master_dev_handle_t handle, char *str) {
     clear_screen(handle);
+
     lcd_goto(handle, 0,0);
 
     uint8_t char_len = 0;
