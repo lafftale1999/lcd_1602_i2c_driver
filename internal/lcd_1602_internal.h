@@ -15,6 +15,7 @@ extern "C" {
 #endif
 
 /* Includes --------------------------------------------------------------------------------------*/
+#include "../lcd_1602.h"
 #include <stdint.h>
 #include <stdlib.h>
 
@@ -57,6 +58,11 @@ extern "C" {
 #define LCD_1602_FONT_5X10              0x04        /**< Sets font to 5x10 */
 #define LCD_1602_FONT_5X7               0x00        /**< Sets font to 5x7 */
 
+#define LCD_1602_BACKLIGHT              0x08
+#define LCD_1602_ENABLE                 0x04
+#define LCD_1602_WRITE_DATA             0x00
+#define LCD_1602_RS                     0x01
+
 /** @} template_exported_defines */
 
 /* Exported macros -------------------------------------------------------------------------------*/
@@ -74,7 +80,7 @@ extern "C" {
  * 
  * @note the macro do not change the register, but returns a bitfield to be written to a register.
  */
-#define LCD_1602_CONFIG_INPUT_SET(dir, mov)                 ((LCD_1602_INPUT_SET | dir | mov) & LCD_1602_INPUT_SET_MASK)
+#define LCD_1602_CONFIG_INPUT_SET(dir, mov) ((LCD_1602_INPUT_SET | dir | mov) & LCD_1602_INPUT_SET_MASK)
 
 /**
  * @brief Macro for configuring the display settings. Use together with;
@@ -105,7 +111,25 @@ extern "C" {
  * 
  * @note the macro do not change the register, but returns a bitfield to be written to a register.
  */
-#define LCD_1602_SHIFT(ele, dir)                            ((LCD_1602_SHIFT_FLAG | ele | dir) & LCD_1602_SHIFT_BITMASK)
+#define LCD_1602_SHIFT(ele, dir)    ((LCD_1602_SHIFT_FLAG | ele | dir) & LCD_1602_SHIFT_BITMASK)
+
+/**
+ * @brief Macro for configuring the lcd screens function. Use together with:
+ * - LCD_1602_DATA_LEN_8_BIT
+ * - LCD_1602_DATA_LEN_4_BIT
+ * - LCD_1602_2_ROWS
+ * - LCD_1602_1_ROW
+ * - LCD_1602_FONT_5X10
+ * - LCD_1602_FONT_5X7
+ * 
+ * @param dl signifies the data-length of read/write. LCD_1602_DATA_LEN_8_BIT | LCD_1602_DATA_LEN_4_BIT
+ * @param r sets the amount of rows used. LCD_1602_2_ROWS | LCD_1602_1_ROW
+ * @param f sets the font to be used. LCD_1602_FONT_5X10 | LCD_1602_FONT_5X7
+ * 
+ * @note the macro do not change the register, but returns a bitfield to be written to a register.
+ */
+#define LCD_1602_FUNCTION_SET(dl, r, f) ((LCD_1602_FUNCTION_SET_FLAG | dl | r | f) & LCD_1602_FUNCTION_SET_MASK)
+
 /** @} template_exported_macros */
 
 
@@ -117,7 +141,6 @@ extern "C" {
 /* Exported function prototypes ------------------------------------------------------------------*/
 /** @addtogroup template_exported_functions Exported functions
  *  @{ */
-void template_init(void);
 /** @} template_exported_functions */
 
 #ifdef __cplusplus
