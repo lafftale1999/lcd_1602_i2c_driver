@@ -79,5 +79,9 @@ These can be changed to fit your own project.
 ## Build and flash
 This project is not made to build on its own, it needs to be incorporated into a bigger system with a CMake build file.
 
+## Documentation
+You can find the documentation for the project here: https://lafftale1999.github.io/lcd_1602_i2c_driver/index.html
+
+
 ## About the author
 I'm currently studying to become an embedded developer and learning about writing drivers based on datasheets from manufacturers. If you have any questions please feel free to reach out!
