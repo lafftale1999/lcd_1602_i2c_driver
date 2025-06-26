@@ -1,14 +1,17 @@
 /**
  *
- * @file:       lcd_1602_registers.h
+ * @file:       lcd_1602_internal.h
  * @author:     Carl Broman <carl.broman@yh.nackademin.se>
  * @brief:  Internal implementation of the LCD1602
- * @addtogroup lcd_1602_internal LCD1602 Internal
+ * @defgroup lcd_1602_internal LCD1602 Internal
+ * @ingroup lcd_1602_driver
  * @{
+ * @brief All defines and macros for internal use. This should not
+ * be included directly.
  -------------------------------------------------------------------------------------------------*/
 
-#ifndef LCD_1602_REGISTERS_H_
-#define LCD_1602_REGISTERS_H_
+#ifndef LCD_1602_INTERNAL_H_
+#define LCD_1602_INTERNAL_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -63,11 +66,12 @@ extern "C" {
 #define LCD_1602_WRITE_DATA             0x00
 #define LCD_1602_RS                     0x01
 
-/** @} template_exported_defines */
+/** @} lcd_1602_defines */
 
 /* Exported macros -------------------------------------------------------------------------------*/
-/** @addtogroup template_exported_macros Exported macros
- *  @{ */
+/** @defgroup internal_macros Internal Macros
+ *  @{ 
+ */
 /**
  * @brief Macro for setting the correct movement of the cursor. Use together with:
  * - LCD_1602_INCREMENT_MODE
@@ -130,22 +134,11 @@ extern "C" {
  */
 #define LCD_1602_FUNCTION_SET(dl, r, f) ((LCD_1602_FUNCTION_SET_FLAG | dl | r | f) & LCD_1602_FUNCTION_SET_MASK)
 
-/** @} template_exported_macros */
-
-
-/* Exported type definitions ---------------------------------------------------------------------*/
-/** @addtogroup template_exported_typedefs Exported type definitions
- *  @{ */
-/** @} template_exported_typedefs */
-
-/* Exported function prototypes ------------------------------------------------------------------*/
-/** @addtogroup template_exported_functions Exported functions
- *  @{ */
-/** @} template_exported_functions */
+/** @} internal_macros */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // SRC_TEMPLATE_TEMPLATE_H_
-/** @} template */
+#endif  // LCD_1602_INTERNAL_H_
+/** @} lcd_1602_internal */

@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "stdlib.h": "c",
+        "lcd_i2c.h": "c"
+    }
+}
