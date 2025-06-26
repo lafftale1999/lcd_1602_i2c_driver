@@ -46,9 +46,9 @@ extern "C" {
  * @ingroup lcd_1602_api
  * @{
  */
-#define DEVICE_ADDRESS  0x27
-#define LCD_1602_SCREEN_CHAR_WIDTH 16
-#define LCD_1602_MAX_ROWS 2
+#define DEVICE_ADDRESS  0x27            /**< Device address. Standars is often 0x27 */
+#define LCD_1602_SCREEN_CHAR_WIDTH 16   /**< Max character width of the screen */
+#define LCD_1602_MAX_ROWS 2             /**< Max rows available on the screen */
 /**@} */
 
 

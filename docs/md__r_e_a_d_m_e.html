@@ -93,9 +93,82 @@ $(function(){initNavTree('md__r_e_a_d_m_e.html','',''); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md3"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+About the project</h1>
+<p>A complete driver for Hitachi compatible 16 x 2 modules with the i2c expander on ESP32. The driver runs the LCD in 4-bit mode and exposes a small and easy to use API for initialization and writing.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+Functions</h1>
+<ul>
+<li>Automatic background light (controlled by the i2c expander-pins)</li>
+<li>Logic for handling <br  />
+ and character overflow.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+Pre-requisites</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+ESP-IDF</h2>
+<p>Espressifs IoT development framework, which contains all the essential dependencies for this project. You can find a guide for installing it here: <a href="https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/index.html">https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/index.html</a></p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+ESP32 device</h2>
+<p>You can use any device, but might need to configure the pins.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+LCD 1602</h2>
+<p>Make sure it's Hitachi 44780 compatible and has a I2C expander.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+GCC and Cmake</h2>
+<p>For compiling and building the project.</p>
+<p><b>GCC For windows</b> <br  />
+ <a href="https://medium.com/@anazilthottunghal/a-guide-to-installing-gcc-on-windows-5cc95c2f38c4">Guide for windows</a></p>
+<p><b>GCC For Mac</b> <br  />
+ <span class="tt">brew install gcc</span></p>
+<p><b>GCC For Linux</b> <br  />
+ <span class="tt">sudo apt-get install gcc</span></p>
+<p><b>Cmake</b> <br  />
+ This is our build tool for the project and routinely used for raspberry pi pico projects.</p>
+<p><a href="https://cmake.org/download/">You can download it here</a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+Pinout</h1>
+<p>The driver standard pinout is set in <b><a class="el" href="lcd__i2c_8h.html">lcd_i2c.h</a></b>:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define I2C_MASTER_SCL_IO           GPIO_NUM_2                  </span><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor">#define I2C_MASTER_SDA_IO           GPIO_NUM_3                  </span><span class="preprocessor"></span></div>
+</div><!-- fragment --><p>Example of circuit for this driver</p>
+<p><img src="resources/circuit.png" alt="Example of circuit schematic for this project" class="inline"/></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
+Installation</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+1. Clone the project</h2>
+<p>Clone this project into <span class="tt">components/</span> in your project. ESP-IDF will automatically recognize the file and it can then be used in your project.</p>
+<p><span class="tt">git clone <a href="https://github.com/lafftale1999/lcd_1602_i2c_driver.git">https://github.com/lafftale1999/lcd_1602_i2c_driver.git</a></span></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+API-reference</h1>
+<p><b><a class="el" href="group__external__functions.html#ga459e745528a2dd7c50e1353dc15be567" title="initializes the LCD 1602 correctly according to the datasheet.">lcd_1602_init()</a></b> <br  />
+ Initializes the LCD according to the datasheet. Returns 0 if successful. </p><div class="fragment"><div class="line">uint8_t <a class="code hl_function" href="group__external__functions.html#ga459e745528a2dd7c50e1353dc15be567">lcd_1602_init</a>(i2c_master_dev_handle_t handle);</div>
+<div class="ttc" id="agroup__external__functions_html_ga459e745528a2dd7c50e1353dc15be567"><div class="ttname"><a href="group__external__functions.html#ga459e745528a2dd7c50e1353dc15be567">lcd_1602_init</a></div><div class="ttdeci">uint8_t lcd_1602_init(i2c_master_dev_handle_t handle)</div><div class="ttdoc">initializes the LCD 1602 correctly according to the datasheet.</div><div class="ttdef"><b>Definition</b> <a href="lcd__1602_8c_source.html#l00141">lcd_1602.c:141</a></div></div>
+</div><!-- fragment --><p><b><a class="el" href="group__external__functions.html#ga027b285cab1c9281a7b6f93226b32e8b" title="Writes out data to the LCD.">lcd_1602_send_string()</a></b> <br  />
+ Writes out string on the display. Returns LCD_WRITE_FINISHED if successful. LCD_WRITE_INTERRUPTED if string is too long for screen. </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__lcd__1602__api.html#ga3b472994915398f5079902ff215430d5">LCD_WRITE_STATUS</a> <a class="code hl_function" href="group__external__functions.html#ga027b285cab1c9281a7b6f93226b32e8b">lcd_1602_send_string</a>(i2c_master_dev_handle_t handle, <span class="keywordtype">char</span> *str);</div>
+<div class="ttc" id="agroup__external__functions_html_ga027b285cab1c9281a7b6f93226b32e8b"><div class="ttname"><a href="group__external__functions.html#ga027b285cab1c9281a7b6f93226b32e8b">lcd_1602_send_string</a></div><div class="ttdeci">LCD_WRITE_STATUS lcd_1602_send_string(i2c_master_dev_handle_t handle, char *str)</div><div class="ttdoc">Writes out data to the LCD.</div><div class="ttdef"><b>Definition</b> <a href="lcd__1602_8c_source.html#l00111">lcd_1602.c:111</a></div></div>
+<div class="ttc" id="agroup__lcd__1602__api_html_ga3b472994915398f5079902ff215430d5"><div class="ttname"><a href="group__lcd__1602__api.html#ga3b472994915398f5079902ff215430d5">LCD_WRITE_STATUS</a></div><div class="ttdeci">LCD_WRITE_STATUS</div><div class="ttdoc">Enum for returning the result of writing to the LCD.</div><div class="ttdef"><b>Definition</b> <a href="lcd__1602_8h_source.html#l00058">lcd_1602.h:58</a></div></div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+Macros</h1>
+<p>These can be changed to fit your own project. </p><div class="fragment"><div class="line"><span class="preprocessor">#define DEVICE_ADDRESS  0x27            </span><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor">#define LCD_1602_SCREEN_CHAR_WIDTH 16   </span><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor">#define LCD_1602_MAX_ROWS 2             </span><span class="preprocessor"></span></div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+Build and flash</h1>
+<p>This project is not made to build on its own, it needs to be incorporated into a bigger system with a CMake build file.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+About the author</h1>
+<p>I'm currently studying to become an embedded developer and learning about writing drivers based on datasheets from manufacturers. If you have any questions please feel free to reach out! </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

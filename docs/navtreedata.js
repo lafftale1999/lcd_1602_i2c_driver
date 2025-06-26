@@ -25,7 +25,24 @@
 var NAVTREE =
 [
   [ "LCD 1602 Driver with ESP32 I2C", "index.html", [
-    [ "LCD 16X2 I2C ESP32 Driver", "md__r_e_a_d_m_e.html", null ],
+    [ "LCD 16X2 I2C ESP32 Driver", "md__r_e_a_d_m_e.html", [
+      [ "About the project", "md__r_e_a_d_m_e.html#autotoc_md4", null ],
+      [ "Functions", "md__r_e_a_d_m_e.html#autotoc_md5", null ],
+      [ "Pre-requisites", "md__r_e_a_d_m_e.html#autotoc_md6", [
+        [ "ESP-IDF", "md__r_e_a_d_m_e.html#autotoc_md7", null ],
+        [ "ESP32 device", "md__r_e_a_d_m_e.html#autotoc_md8", null ],
+        [ "LCD 1602", "md__r_e_a_d_m_e.html#autotoc_md9", null ],
+        [ "GCC and Cmake", "md__r_e_a_d_m_e.html#autotoc_md10", null ]
+      ] ],
+      [ "Pinout", "md__r_e_a_d_m_e.html#autotoc_md11", null ],
+      [ "Installation", "md__r_e_a_d_m_e.html#autotoc_md12", [
+        [ "1. Clone the project", "md__r_e_a_d_m_e.html#autotoc_md13", null ]
+      ] ],
+      [ "API-reference", "md__r_e_a_d_m_e.html#autotoc_md14", null ],
+      [ "Macros", "md__r_e_a_d_m_e.html#autotoc_md15", null ],
+      [ "Build and flash", "md__r_e_a_d_m_e.html#autotoc_md16", null ],
+      [ "About the author", "md__r_e_a_d_m_e.html#autotoc_md17", null ]
+    ] ],
     [ "Topics", "topics.html", "topics" ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],

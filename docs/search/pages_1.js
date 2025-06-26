@@ -1,4 +1,9 @@
 var searchData=
 [
-  ['be_20included_20directly_0',['be included directly.',['../group__lcd__1602__internal.html#autotoc_md0',1,'']]]
+  ['about_20the_20author_0',['About the author',['../md__r_e_a_d_m_e.html#autotoc_md17',1,'']]],
+  ['about_20the_20project_1',['About the project',['../md__r_e_a_d_m_e.html#autotoc_md4',1,'']]],
+  ['and_20cmake_2',['GCC and Cmake',['../md__r_e_a_d_m_e.html#autotoc_md10',1,'']]],
+  ['and_20flash_3',['Build and flash',['../md__r_e_a_d_m_e.html#autotoc_md16',1,'']]],
+  ['api_20reference_4',['API-reference',['../md__r_e_a_d_m_e.html#autotoc_md14',1,'']]],
+  ['author_5',['About the author',['../md__r_e_a_d_m_e.html#autotoc_md17',1,'']]]
 ];
