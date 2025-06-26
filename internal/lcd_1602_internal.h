@@ -30,7 +30,7 @@ extern "C" {
 #define LCD_1602_INPUT_SET              0x04        /**< Flag for configuring input settings */
 #define LCD_1602_INCREMENT_MODE         0x02        /**< Increments the DDRAM address by 1 */
 #define LCD_1602_DECREMENT_MODE         0x00        /**< Dectrements the DDRAM address by 1 */
-#define LCD_1602_CURSOR_MOVE_ON_WRITE   0x01        /**< Move cursor when byte is written */
+#define LCD_1602_DISPLAY_SHIFT_ON_WRITE 0x01        /**< Move cursor when byte is written */
 #define LCD_1602_CURSOR_N_MOVE          0x00        /**< Cursor does not move when byte is written */
 
 #define LCD_1602_DISPLAY_SWITCH_MASK    0x0F        /**< Bitmask for configuring display settings */

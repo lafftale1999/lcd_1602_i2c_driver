@@ -101,7 +101,7 @@ uint8_t lcd_1602_init(i2c_master_dev_handle_t handle) {
     send_command(handle, LCD_1602_FUNCTION_SET(LCD_1602_DATA_LEN_4_BIT, LCD_1602_2_ROWS, LCD_1602_FONT_5X10));
     send_command(handle, LCD_1602_CONFIG_DISPLAY_SWITCH(LCD_1602_DISPLAY_ON, LCD_1602_CURSOR_OFF, LCD_1602_N_BLINK_DISPLAY));
     clear_screen(handle);
-    send_command(handle, LCD_1602_CONFIG_INPUT_SET(LCD_1602_INCREMENT_MODE, LCD_1602_CURSOR_MOVE_ON_WRITE));
+    send_command(handle, LCD_1602_CONFIG_INPUT_SET(LCD_1602_INCREMENT_MODE, LCD_1602_CURSOR_N_MOVE));
 
     return 0;
 }
