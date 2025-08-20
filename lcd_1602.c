@@ -8,7 +8,6 @@
  -------------------------------------------------------------------------------------------------*/
 
 #include "internal/lcd_1602_internal.h"
-#include "internal/lcd_i2c.h"
 
 /**
  * @brief Sends a nibble (half-byte) using the i2c bus.
