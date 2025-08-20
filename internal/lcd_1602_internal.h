@@ -18,7 +18,7 @@ extern "C" {
 #endif
 
 /* Includes --------------------------------------------------------------------------------------*/
-#include "../lcd_1602.h"
+#include "../include/lcd_1602.h"
 #include <stdint.h>
 #include <stdlib.h>
 

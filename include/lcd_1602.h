@@ -38,7 +38,7 @@ extern "C" {
 #endif
 
 /* Includes --------------------------------------------------------------------------------------*/
-#include "internal/lcd_i2c.h"
+#include "../internal/lcd_i2c.h"
 
 /**
  * @brief configurable defines for setting up the LCD1602
