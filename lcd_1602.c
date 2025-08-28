@@ -62,7 +62,7 @@ static uint8_t send_command(i2c_master_dev_handle_t handle, uint8_t cmd) {
  * 
  * @return 0 for success, else for fail.
  */
-static uint8_t send_char(i2c_master_dev_handle_t handle, char c) {
+ uint8_t send_char(i2c_master_dev_handle_t handle, char c) {
     uint8_t err = 0;
 
     uint8_t high = c & 0xF0;

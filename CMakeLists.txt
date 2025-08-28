@@ -7,5 +7,5 @@ idf_component_register(
     PRIV_INCLUDE_DIRS
         "internal"
     REQUIRES
-        driver freertos project_config
+        driver freertos project_config app_events
 )
