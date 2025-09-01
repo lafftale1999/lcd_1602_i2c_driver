@@ -62,7 +62,7 @@ static uint8_t send_command(i2c_master_dev_handle_t handle, uint8_t cmd) {
  * 
  * @return 0 for success, else for fail.
  */
- uint8_t send_char(i2c_master_dev_handle_t handle, char c) {
+ uint8_t lcd_1602_send_char(i2c_master_dev_handle_t handle, char c) {
     uint8_t err = 0;
 
     uint8_t high = c & 0xF0;
@@ -83,7 +83,7 @@ static uint8_t send_command(i2c_master_dev_handle_t handle, uint8_t cmd) {
  * 
  * @return 0 for success, else for fail.
  */
-static uint8_t clear_screen(i2c_master_dev_handle_t handle) {
+ uint8_t lcd_1602_clear_screen(i2c_master_dev_handle_t handle) {
     uint8_t err = send_command(handle, LCD_1602_CLEAR_SCREEN);
     vTaskDelay(pdMS_TO_TICKS(10));
     return err;
@@ -108,7 +108,7 @@ static uint8_t lcd_goto(i2c_master_dev_handle_t handle, uint8_t x, uint8_t y) {
 }
 
 LCD_WRITE_STATUS lcd_1602_send_string(i2c_master_dev_handle_t handle, char *str) {
-    clear_screen(handle);
+    lcd_1602_clear_screen(handle);
 
     uint8_t char_len = 0;
     uint8_t row = 0;
@@ -129,7 +129,7 @@ LCD_WRITE_STATUS lcd_1602_send_string(i2c_master_dev_handle_t handle, char *str)
             return LCD_WRITE_FINISHED;
         }
 
-        send_char(handle, *str);
+        lcd_1602_send_char(handle, *str);
         char_len++;
         str++;
     }
@@ -155,7 +155,7 @@ a specific start up sequence described by the manufacturer.
 
     send_command(handle, LCD_1602_FUNCTION_SET(LCD_1602_DATA_LEN_4_BIT, LCD_1602_2_ROWS, LCD_1602_FONT_5X10));
     send_command(handle, LCD_1602_CONFIG_DISPLAY_SWITCH(LCD_1602_DISPLAY_ON, LCD_1602_CURSOR_OFF, LCD_1602_N_BLINK_DISPLAY));
-    clear_screen(handle);
+    lcd_1602_clear_screen(handle);
     send_command(handle, LCD_1602_CONFIG_INPUT_SET(LCD_1602_INCREMENT_MODE, LCD_1602_CURSOR_N_MOVE));
 
     return 0;

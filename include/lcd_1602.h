@@ -87,7 +87,9 @@ LCD_WRITE_STATUS lcd_1602_send_string(i2c_master_dev_handle_t handle, char *str)
  */
 uint8_t lcd_1602_init(i2c_master_dev_handle_t handle);
 
-uint8_t send_char(i2c_master_dev_handle_t handle, char c);
+uint8_t lcd_1602_send_char(i2c_master_dev_handle_t handle, char c);
+
+uint8_t lcd_1602_clear_screen(i2c_master_dev_handle_t handle);
 /**@} */
 
 #ifdef __cplusplus
