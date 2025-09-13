@@ -119,8 +119,11 @@ LCD_WRITE_STATUS lcd_1602_send_string(i2c_master_dev_handle_t handle, char *str)
                 lcd_goto(handle, 0,1);
                 row++;
                 char_len = 0;
-                str++;
-                continue;
+                
+                if(*str == '\n') {
+                    str++;
+                    continue;
+                }  
             }
             else return LCD_WRITE_INTERRUPTED;
         }
