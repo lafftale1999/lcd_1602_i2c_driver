@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-#include "i2c_config.h"
+#include "project_config.h"
 
 /**
  * @brief initializes the i2c communications and
