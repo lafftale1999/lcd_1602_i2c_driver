@@ -83,6 +83,8 @@ LCD_WRITE_STATUS lcd_1602_send_string(i2c_master_dev_handle_t handle, const char
 
 /**
  * @brief initializes the LCD 1602 correctly according to the datasheet.
+ *
+ * Always turns the backlight on, even if lcd_1602_backlight_off() was called before.
  * 
  * @param handle The device handle use to writing on the i2c bus
  * 
@@ -136,6 +138,26 @@ LCD_WRITE_STATUS lcd_1602_write_top(i2c_master_dev_handle_t handle, const char *
  * truncated, LCD_WRITE_INTERRUPTED if communication on the i2c bus failed.
  */
 LCD_WRITE_STATUS lcd_1602_write_bottom(i2c_master_dev_handle_t handle, const char *str);
+
+/**
+ * @brief Turns off the backlight. The screen content is kept.
+ *
+ * The backlight stays off for all later writes until lcd_1602_backlight_on() is called.
+ *
+ * @param handle The device handle used to writing on the i2c bus
+ *
+ * @return 0 for success or 1 for fail.
+ */
+uint8_t lcd_1602_backlight_off(i2c_master_dev_handle_t handle);
+
+/**
+ * @brief Turns on the backlight. The backlight is on by default.
+ *
+ * @param handle The device handle used to writing on the i2c bus
+ *
+ * @return 0 for success or 1 for fail.
+ */
+uint8_t lcd_1602_backlight_on(i2c_master_dev_handle_t handle);
 /**@} */
 
 #ifdef __cplusplus

@@ -4,7 +4,7 @@
 A complete driver for Hitachi compatible 16 x 2 modules with the i2c expander on ESP32. The driver runs the LCD in 4-bit mode and exposes a small and easy to use API for initialization and writing.
 
 ## Functions
-* Automatic background light (controlled by the i2c expander-pins)
+* Background light that is on by default and can be turned off and on (controlled by the i2c expander-pins)
 * Logic for handling \n and character overflow.
 * Write to the top or bottom row independently without clearing the other row.
 
@@ -58,7 +58,7 @@ Clone this project into `components/` in your project. ESP-IDF will automaticall
 ## API-reference
 
 **lcd_1602_init()**  
-Initializes the LCD according to the datasheet. Returns 0 if successful.
+Initializes the LCD according to the datasheet and turns the backlight on. Returns 0 if successful.
 ```c
 uint8_t lcd_1602_init(i2c_master_dev_handle_t handle);
 ```
@@ -91,6 +91,18 @@ uint8_t lcd_1602_send_char(i2c_master_dev_handle_t handle, char c);
 Clears the screen and moves the cursor to the top left. Returns 0 if successful.
 ```c
 uint8_t lcd_1602_clear_screen(i2c_master_dev_handle_t handle);
+```
+
+**lcd_1602_backlight_off()**  
+Turns off the backlight without changing the screen content. It stays off until `lcd_1602_backlight_on()` is called. Returns 0 if successful.
+```c
+uint8_t lcd_1602_backlight_off(i2c_master_dev_handle_t handle);
+```
+
+**lcd_1602_backlight_on()**  
+Turns the backlight back on. The backlight is on by default. Returns 0 if successful.
+```c
+uint8_t lcd_1602_backlight_on(i2c_master_dev_handle_t handle);
 ```
 
 ## Macros

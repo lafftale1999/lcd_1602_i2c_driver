@@ -12,6 +12,9 @@
 /** DDRAM start address of each row on a HD44780 compatible 2-row display */
 static const uint8_t row_offsets[LCD_1602_MAX_ROWS] = { 0x00, 0x40 };
 
+/** Backlight bit sent with every write to the I2C expander. LCD_1602_BACKLIGHT = on, 0 = off */
+static uint8_t backlight_state = LCD_1602_BACKLIGHT;
+
 /**
  * @brief Blocks for at least the given number of milliseconds.
  *
@@ -39,7 +42,7 @@ static uint8_t write_nibble(i2c_master_dev_handle_t handle, uint8_t nibble, bool
 
     if(rs) data |= LCD_1602_RS;
 
-    data |= LCD_1602_BACKLIGHT;
+    data |= backlight_state;
 
     uint8_t sequence[2];
     sequence[0] = data | LCD_1602_ENABLE;
@@ -93,6 +96,31 @@ uint8_t lcd_1602_clear_screen(i2c_master_dev_handle_t handle) {
     uint8_t err = send_command(handle, LCD_1602_CLEAR_SCREEN);
     lcd_delay_ms(2);    // Clear display needs 1.52 ms to execute
     return err;
+}
+
+/**
+ * @brief Writes the current backlight state to the I2C expander without
+ * pulsing enable, so the LCD controller ignores the write.
+ *
+ * @param handle Device handle for the i2c bus
+ *
+ * @return 0 for success, else for fail.
+ */
+static uint8_t write_backlight(i2c_master_dev_handle_t handle) {
+    uint8_t data = backlight_state;
+    esp_err_t ret = i2c_master_transmit(handle, &data, sizeof(data), I2C_MASTER_TIMEOUT_MS);
+
+    return (ret == ESP_OK) ? 0 : 1;
+}
+
+uint8_t lcd_1602_backlight_off(i2c_master_dev_handle_t handle) {
+    backlight_state = 0;
+    return write_backlight(handle);
+}
+
+uint8_t lcd_1602_backlight_on(i2c_master_dev_handle_t handle) {
+    backlight_state = LCD_1602_BACKLIGHT;
+    return write_backlight(handle);
 }
 
 /**
@@ -199,6 +227,9 @@ a specific start up sequence described by the manufacturer.
 */
     uint8_t err = 0;
 
+    // Always start with the backlight on, even if it was turned off before a re-init
+    backlight_state = LCD_1602_BACKLIGHT;
+
     // Manufacturer specific order
     lcd_delay_ms(50);   // Wait >40 ms after power on
     err |= write_nibble(handle, (0x03 << 4), false);
@@ -216,6 +247,8 @@ a specific start up sequence described by the manufacturer.
     err |= send_command(handle, LCD_1602_CONFIG_DISPLAY_SWITCH(LCD_1602_DISPLAY_ON, LCD_1602_CURSOR_OFF, LCD_1602_N_BLINK_DISPLAY));
     err |= lcd_1602_clear_screen(handle);
     err |= send_command(handle, LCD_1602_CONFIG_INPUT_SET(LCD_1602_INCREMENT_MODE, LCD_1602_CURSOR_N_MOVE));
+
+    (void)lcd_1602_backlight_on(handle);
 
     return err ? 1 : 0;
 }
