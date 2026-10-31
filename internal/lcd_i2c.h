@@ -26,7 +26,7 @@ extern "C" {
 uint8_t i2c_open(i2c_master_bus_handle_t *bus_handle, i2c_master_dev_handle_t *dev_handle, const uint8_t address);
 
 #ifdef __cplusplus
-extern "C" }
+}
 #endif
 
 #endif

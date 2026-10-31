@@ -32,6 +32,7 @@ var lcd__1602__internal_8h =
     [ "LCD_1602_N_BLINK_DISPLAY", "group__lcd__1602__defines.html#ga0fff31880d661d8c0b968417e41e9444", null ],
     [ "LCD_1602_RESET_CURSOR_POS", "group__lcd__1602__defines.html#ga0ec5fac5a816bef39a6df0240d1f4eb7", null ],
     [ "LCD_1602_RS", "group__lcd__1602__defines.html#gae5baf63af73482575188885004fe54c2", null ],
+    [ "LCD_1602_SET_DDRAM_ADDR", "group__lcd__1602__defines.html#ga4ee65e32a821059ea0116f447738f0b1", null ],
     [ "LCD_1602_SHIFT", "group__internal__macros.html#ga3642578b8e26bc5a72523a04cd1eec4f", null ],
     [ "LCD_1602_SHIFT_BITMASK", "group__lcd__1602__defines.html#ga480c3fecdd7e407fdb295c52e9b572e8", null ],
     [ "LCD_1602_SHIFT_FLAG", "group__lcd__1602__defines.html#gad445ecfd5176999b6342546a7cc8fa50", null ],

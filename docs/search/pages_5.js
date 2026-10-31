@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['esp_20idf_0',['ESP-IDF',['../md__r_e_a_d_m_e.html#autotoc_md7',1,'']]],
-  ['esp32_20device_1',['ESP32 device',['../md__r_e_a_d_m_e.html#autotoc_md8',1,'']]],
-  ['esp32_20driver_2',['LCD 16X2 I2C ESP32 Driver',['../md__r_e_a_d_m_e.html',1,'']]]
+  ['changed_0',['Changed',['../md_CHANGELOG.html#autotoc_md4',1,'']]],
+  ['changelog_1',['Changelog',['../md_CHANGELOG.html',1,'']]],
+  ['clone_20the_20project_2',['1. Clone the project',['../md_README.html#autotoc_md18',1,'']]],
+  ['cmake_3',['GCC and Cmake',['../md_README.html#autotoc_md15',1,'']]]
 ];

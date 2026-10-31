@@ -25,23 +25,31 @@
 var NAVTREE =
 [
   [ "LCD 1602 Driver with ESP32 I2C", "index.html", [
-    [ "LCD 16X2 I2C ESP32 Driver", "md__r_e_a_d_m_e.html", [
-      [ "About the project", "md__r_e_a_d_m_e.html#autotoc_md4", null ],
-      [ "Functions", "md__r_e_a_d_m_e.html#autotoc_md5", null ],
-      [ "Pre-requisites", "md__r_e_a_d_m_e.html#autotoc_md6", [
-        [ "ESP-IDF", "md__r_e_a_d_m_e.html#autotoc_md7", null ],
-        [ "ESP32 device", "md__r_e_a_d_m_e.html#autotoc_md8", null ],
-        [ "LCD 1602", "md__r_e_a_d_m_e.html#autotoc_md9", null ],
-        [ "GCC and Cmake", "md__r_e_a_d_m_e.html#autotoc_md10", null ]
+    [ "Changelog", "md_CHANGELOG.html", [
+      [ "[Unreleased] - 2026-10-31", "md_CHANGELOG.html#autotoc_md1", [
+        [ "Added", "md_CHANGELOG.html#autotoc_md2", null ],
+        [ "Fixed", "md_CHANGELOG.html#autotoc_md3", null ],
+        [ "Changed", "md_CHANGELOG.html#autotoc_md4", null ]
+      ] ]
+    ] ],
+    [ "LCD 16X2 I2C ESP32 Driver", "md_README.html", [
+      [ "About the project", "md_README.html#autotoc_md9", null ],
+      [ "Functions", "md_README.html#autotoc_md10", null ],
+      [ "Pre-requisites", "md_README.html#autotoc_md11", [
+        [ "ESP-IDF", "md_README.html#autotoc_md12", null ],
+        [ "ESP32 device", "md_README.html#autotoc_md13", null ],
+        [ "LCD 1602", "md_README.html#autotoc_md14", null ],
+        [ "GCC and Cmake", "md_README.html#autotoc_md15", null ]
       ] ],
-      [ "Pinout", "md__r_e_a_d_m_e.html#autotoc_md11", null ],
-      [ "Installation", "md__r_e_a_d_m_e.html#autotoc_md12", [
-        [ "1. Clone the project", "md__r_e_a_d_m_e.html#autotoc_md13", null ]
+      [ "Pinout", "md_README.html#autotoc_md16", null ],
+      [ "Installation", "md_README.html#autotoc_md17", [
+        [ "1. Clone the project", "md_README.html#autotoc_md18", null ]
       ] ],
-      [ "API-reference", "md__r_e_a_d_m_e.html#autotoc_md14", null ],
-      [ "Macros", "md__r_e_a_d_m_e.html#autotoc_md15", null ],
-      [ "Build and flash", "md__r_e_a_d_m_e.html#autotoc_md16", null ],
-      [ "About the author", "md__r_e_a_d_m_e.html#autotoc_md17", null ]
+      [ "API-reference", "md_README.html#autotoc_md19", null ],
+      [ "Macros", "md_README.html#autotoc_md20", null ],
+      [ "Build and flash", "md_README.html#autotoc_md21", null ],
+      [ "Documentation", "md_README.html#autotoc_md22", null ],
+      [ "About the author", "md_README.html#autotoc_md23", null ]
     ] ],
     [ "Topics", "topics.html", "topics" ],
     [ "Files", "files.html", [
@@ -49,6 +57,7 @@ var NAVTREE =
       [ "Globals", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
@@ -60,7 +69,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"dir_7374381ecdb819c64ee9b6ea2bd3370d.html"
+"CMakeCCompilerId_8c.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

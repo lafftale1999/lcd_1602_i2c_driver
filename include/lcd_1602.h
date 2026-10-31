@@ -1,6 +1,6 @@
 /**
  *
- * @file:       lcd_1602_driver.h
+ * @file:       lcd_1602.h
  * @author:     Carl Broman <carl.broman@yh.nackademin.se>
  * @brief:  External API:s to use for the LCD 1602 driver.
  * @defgroup lcd_1602_api LCD1602 External API:s
@@ -46,7 +46,7 @@ extern "C" {
  * @ingroup lcd_1602_api
  * @{
  */
-#define DEVICE_ADDRESS  0x27            /**< Device address. Standars is often 0x27 */
+#define DEVICE_ADDRESS  0x27            /**< Device address. Standard is often 0x27 */
 #define LCD_1602_SCREEN_CHAR_WIDTH 16   /**< Max character width of the screen */
 #define LCD_1602_MAX_ROWS 2             /**< Max rows available on the screen */
 /**@} */
@@ -74,9 +74,12 @@ typedef enum LCD_WRITE_STATUS{
  * @param handle The device handle used to writing on the i2c bus
  * @param str The string to be written to the LCD
  * 
- * @return LCD_WRITE_FINISHED for successful. LCD_WRITE_INTERRUPTED if string is too long for screen.
+ * @note Clears the screen first. '\n' moves to the next row and text wraps automatically.
+ *
+ * @return LCD_WRITE_FINISHED for successful. LCD_WRITE_INTERRUPTED if string is too long for
+ * the screen or if communication on the i2c bus failed.
  */
-LCD_WRITE_STATUS lcd_1602_send_string(i2c_master_dev_handle_t handle, char *str);
+LCD_WRITE_STATUS lcd_1602_send_string(i2c_master_dev_handle_t handle, const char *str);
 
 /**
  * @brief initializes the LCD 1602 correctly according to the datasheet.
@@ -87,13 +90,56 @@ LCD_WRITE_STATUS lcd_1602_send_string(i2c_master_dev_handle_t handle, char *str)
  */
 uint8_t lcd_1602_init(i2c_master_dev_handle_t handle);
 
+/**
+ * @brief Writes a single character at the current cursor position.
+ *
+ * @param handle The device handle used to writing on the i2c bus
+ * @param c The character to write
+ *
+ * @return 0 for success or 1 for fail.
+ */
 uint8_t lcd_1602_send_char(i2c_master_dev_handle_t handle, char c);
 
+/**
+ * @brief Clears the screen and moves the cursor to the first row, first column.
+ *
+ * @param handle The device handle used to writing on the i2c bus
+ *
+ * @return 0 for success or 1 for fail.
+ */
 uint8_t lcd_1602_clear_screen(i2c_master_dev_handle_t handle);
+
+/**
+ * @brief Writes a string to the top row without changing the bottom row.
+ *
+ * Any remaining space on the row is filled with blanks, so old text on the
+ * row is erased. Writing stops at '\0', '\n' or the end of the row.
+ *
+ * @param handle The device handle used to writing on the i2c bus
+ * @param str The string to write
+ *
+ * @return LCD_WRITE_FINISHED if the whole string fit, LCD_TOO_LONG_STRING if it was
+ * truncated, LCD_WRITE_INTERRUPTED if communication on the i2c bus failed.
+ */
+LCD_WRITE_STATUS lcd_1602_write_top(i2c_master_dev_handle_t handle, const char *str);
+
+/**
+ * @brief Writes a string to the bottom row without changing the top row.
+ *
+ * Any remaining space on the row is filled with blanks, so old text on the
+ * row is erased. Writing stops at '\0', '\n' or the end of the row.
+ *
+ * @param handle The device handle used to writing on the i2c bus
+ * @param str The string to write
+ *
+ * @return LCD_WRITE_FINISHED if the whole string fit, LCD_TOO_LONG_STRING if it was
+ * truncated, LCD_WRITE_INTERRUPTED if communication on the i2c bus failed.
+ */
+LCD_WRITE_STATUS lcd_1602_write_bottom(i2c_master_dev_handle_t handle, const char *str);
 /**@} */
 
 #ifdef __cplusplus
-extern "C" }
+}
 #endif
 
 #endif

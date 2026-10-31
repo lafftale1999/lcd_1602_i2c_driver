@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['pinout_0',['Pinout',['../md__r_e_a_d_m_e.html#autotoc_md11',1,'']]],
-  ['pre_20requisites_1',['Pre-requisites',['../md__r_e_a_d_m_e.html#autotoc_md6',1,'']]],
-  ['project_2',['project',['../md__r_e_a_d_m_e.html#autotoc_md13',1,'1. Clone the project'],['../md__r_e_a_d_m_e.html#autotoc_md4',1,'About the project']]]
+  ['hex_0',['HEX',['../CMakeCCompilerId_8c.html#a46d5d95daa1bef867bd0179594310ed5',1,'HEX:&#160;CMakeCCompilerId.c'],['../CMakeCXXCompilerId_8cpp.html#a46d5d95daa1bef867bd0179594310ed5',1,'HEX:&#160;CMakeCXXCompilerId.cpp']]]
 ];

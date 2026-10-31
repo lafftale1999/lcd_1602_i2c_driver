@@ -6,6 +6,7 @@ A complete driver for Hitachi compatible 16 x 2 modules with the i2c expander on
 ## Functions
 * Automatic background light (controlled by the i2c expander-pins)
 * Logic for handling \n and character overflow.
+* Write to the top or bottom row independently without clearing the other row.
 
 ## Pre-requisites
 
@@ -36,7 +37,7 @@ This is our build tool for the project and routinely used for raspberry pi pico 
 [You can download it here](https://cmake.org/download/)
 
 ## Pinout
-The driver standard pinout is set in **lcd_i2c.h**:
+The pinout is set in **project_config.h**, which your project provides as a component named `project_config`:
 
 ```c
 #define I2C_MASTER_SCL_IO           GPIO_NUM_2                  /*!< GPIO number used for I2C master clock */
@@ -65,13 +66,37 @@ uint8_t lcd_1602_init(i2c_master_dev_handle_t handle);
 **lcd_1602_send_string()**  
 Writes out string on the display. Returns LCD_WRITE_FINISHED if successful. LCD_WRITE_INTERRUPTED if string is too long for screen.
 ```c
-LCD_WRITE_STATUS lcd_1602_send_string(i2c_master_dev_handle_t handle, char *str);
+LCD_WRITE_STATUS lcd_1602_send_string(i2c_master_dev_handle_t handle, const char *str);
+```
+
+**lcd_1602_write_top()**  
+Writes a string to the top row without touching the bottom row. The rest of the row is blanked. Returns LCD_WRITE_FINISHED if the whole string fit, LCD_TOO_LONG_STRING if it was truncated.
+```c
+LCD_WRITE_STATUS lcd_1602_write_top(i2c_master_dev_handle_t handle, const char *str);
+```
+
+**lcd_1602_write_bottom()**  
+Same as `lcd_1602_write_top()` but for the bottom row.
+```c
+LCD_WRITE_STATUS lcd_1602_write_bottom(i2c_master_dev_handle_t handle, const char *str);
+```
+
+**lcd_1602_send_char()**  
+Writes a single character at the current cursor position. Returns 0 if successful.
+```c
+uint8_t lcd_1602_send_char(i2c_master_dev_handle_t handle, char c);
+```
+
+**lcd_1602_clear_screen()**  
+Clears the screen and moves the cursor to the top left. Returns 0 if successful.
+```c
+uint8_t lcd_1602_clear_screen(i2c_master_dev_handle_t handle);
 ```
 
 ## Macros
 These can be changed to fit your own project.
 ```c
-#define DEVICE_ADDRESS  0x27            /**< Device address. Standars is often 0x27 */
+#define DEVICE_ADDRESS  0x27            /**< Device address. Standard is often 0x27 */
 #define LCD_1602_SCREEN_CHAR_WIDTH 16   /**< Max character width of the screen */
 #define LCD_1602_MAX_ROWS 2             /**< Max rows available on the screen */
 ```

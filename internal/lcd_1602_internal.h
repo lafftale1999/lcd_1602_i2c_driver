@@ -21,6 +21,7 @@ extern "C" {
 #include "../include/lcd_1602.h"
 #include <stdint.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 /* Exported defines ------------------------------------------------------------------------------*/
 /** @defgroup lcd_1602_defines Internal Defines
@@ -28,6 +29,7 @@ extern "C" {
  *  @{ */
 #define LCD_1602_CLEAR_SCREEN           0x01        /**< Clear screen and sets cursor position to 0*/
 #define LCD_1602_RESET_CURSOR_POS       0x02        /**< Resets the cursor position without changing the content*/
+#define LCD_1602_SET_DDRAM_ADDR         0x80        /**< Set DDRAM address (cursor position), OR with the address */
 
 #define LCD_1602_INPUT_SET_MASK         0x07        /**< Bitmask for configuring input settings*/
 #define LCD_1602_INPUT_SET              0x04        /**< Flag for configuring input settings */
@@ -76,11 +78,11 @@ extern "C" {
  * @brief Macro for setting the correct movement of the cursor. Use together with:
  * - LCD_1602_INCREMENT_MODE
  * - LCD_1602_DECREMENT_MODE
- * - LCD_1602_CURSOR_MOVE_ON_WRITE
+ * - LCD_1602_DISPLAY_SHIFT_ON_WRITE
  * - LCD_1602_CURSOR_N_MOVE
  * 
  * @param dir the direction to move the cursor. LCD_1602_INCREMENT_MODE for forward | LCD_1602_DECREMENT_MODE for backwards
- * @param mov if the cursor should move when bytes are written. LCD_1602_CURSOR_MOVE_ON_WRITE or LCD_1602_CURSOR_N_MOVE
+ * @param mov if the cursor should move when bytes are written. LCD_1602_DISPLAY_SHIFT_ON_WRITE or LCD_1602_CURSOR_N_MOVE
  * 
  * @note the macro do not change the register, but returns a bitfield to be written to a register.
  */

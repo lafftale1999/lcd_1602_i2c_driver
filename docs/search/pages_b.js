@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['pinout_0',['Pinout',['../md__r_e_a_d_m_e.html#autotoc_md11',1,'']]],
-  ['pre_20requisites_1',['Pre-requisites',['../md__r_e_a_d_m_e.html#autotoc_md6',1,'']]],
-  ['project_2',['project',['../md__r_e_a_d_m_e.html#autotoc_md13',1,'1. Clone the project'],['../md__r_e_a_d_m_e.html#autotoc_md4',1,'About the project']]]
+  ['lcd_201602_0',['LCD 1602',['../md_README.html#autotoc_md14',1,'']]],
+  ['lcd_2016x2_20i2c_20esp32_20driver_1',['LCD 16X2 I2C ESP32 Driver',['../md_README.html',1,'']]]
 ];

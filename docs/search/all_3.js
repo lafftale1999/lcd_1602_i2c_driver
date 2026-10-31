@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['clone_20the_20project_0',['1. Clone the project',['../md__r_e_a_d_m_e.html#autotoc_md13',1,'']]],
-  ['cmake_1',['GCC and Cmake',['../md__r_e_a_d_m_e.html#autotoc_md10',1,'']]],
-  ['configurable_20defines_2',['Configurable Defines',['../group__config__defines.html',1,'']]]
+  ['_5f_5fhas_5finclude_0',['__has_include',['../CMakeCCompilerId_8c.html#ae5510d82e4946f1656f4969911c54736',1,'__has_include:&#160;CMakeCCompilerId.c'],['../CMakeCXXCompilerId_8cpp.html#ae5510d82e4946f1656f4969911c54736',1,'__has_include:&#160;CMakeCXXCompilerId.cpp']]]
 ];
