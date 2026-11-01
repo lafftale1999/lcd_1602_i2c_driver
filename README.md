@@ -122,3 +122,6 @@ You can find the documentation for the project here: https://lafftale1999.github
 
 ## About the author
 I'm currently studying to become an embedded developer and learning about writing drivers based on datasheets from manufacturers. If you have any questions please feel free to reach out!
+
+## License
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
